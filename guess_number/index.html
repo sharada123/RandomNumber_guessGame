@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Guess Number</title>
+</head>
+<style>
+    .backgroundcolor{
+        background-color: rgb(146, 143, 143);
+    }
+    .colheight{
+        height: 10rem;
+    }
+    .colmargin{
+        margin-top: 15rem;
+
+    }
+</style>
+<body>
+    <div class="container-fluid bg-dark">
+        <div class="container card  backgroundcolor text-center my-1 fs-4 fw-bold">
+            <img src="wallpaper.jpg" height="100px" class="card-img" alt="...">
+            <div class="row card-img-overlay">
+                <h1 class="text-center text-primary">Guess Number Game</h1>
+            </div>
+        </div>
+        <div class="container card  backgroundcolor text-center my-1  fw-bold text-dark">
+            <img src="wallpaper.jpg" class="card-img" alt="...">
+            <div class="row card-img-overlay">
+                <div class="col">
+                    <p class="mt-5 fs-1 card-text fs-1"> Guess the number between 1 to 100 </p>
+                </div>
+            </div>
+            <div class="row card-img-overlay">
+                <div class="col-6   colheight">
+                    <p  id="random" class="colmargin fs-1 card-text"></p>
+                </div>
+                <div class="col-6  colheight">
+                        <P id="score"  class="colmargin fs-1 card-text"></P>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    
+    let Random_num = Math.round((Math.random() * 100));
+    document.write(Random_num + "<br>");
+    console.log(Random_num);
+    let user_input = parseInt(prompt("Enter the number"));
+    let chances = 1;
+
+    while (Random_num !== user_input && chances < 20) {
+       
+       
+        if(Random_num>user_input)
+        {
+            alert("Try biggest number");
+            user_input = parseInt(prompt("Enter the number "));
+        }else{
+            alert("Try lowest number");
+            user_input = parseInt(prompt("Enter the number "));
+        }
+        chances++;
+    }
+
+    if (Random_num === user_input) {
+        document.write(Random_num + "<br>");
+        document.getElementById("random").innerText="Congratulations! You have entered correct number:" +Random_num;
+        document.getElementById('score').innerText="Your score is 100%";
+
+    } 
+    else {
+        
+        document.getElementById("random").innerText="Unfortunatly you are falied! The correct number was:" +Random_num;
+        document.getElementById('score').innerText="Your score is 0%";
+    }
+</script>
+</html>
